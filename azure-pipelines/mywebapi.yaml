@@ -1,0 +1,17 @@
+trigger: none
+pool: vmss-azure-pipelines
+
+variables:
+  DOCKER_BUILDKIT: 1
+
+steps:
+- task: Docker@2
+  displayName: "Build Docker Image"
+  inputs:
+    command: build
+    repository: mywebapi
+    tags: |
+      latest
+    buildContext: MyWebApi
+    arguments: >
+      --progress=plain
